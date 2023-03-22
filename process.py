@@ -7,6 +7,7 @@ class Process:
         self.time_left = self.time_needed_for_execution
         self.time_waited_for_execution_start = 0
         self.time_from_start_to_finish = 0
+        self.has_started = False
 
     def is_done(self):
         return self.time_left <= 0
@@ -27,9 +28,3 @@ class Process:
 
     def __lt__(self, other):
         return self.time_needed_for_execution < other.time_needed_for_execution
-
-    def full_report(self):
-        return f"process: arrival time - {self.arrival_time}," \
-               f" time needed for execution - {self.time_needed_for_execution}, time left - {self.time_left}, time " \
-               f"waited for starting execution - {self.time_waited_for_execution_start}, time from start to finish - " \
-               f"{self.time_from_start_to_finish} "

@@ -1,11 +1,7 @@
 from collections import deque
 
-FINISH_TIME = 100000
-
 
 def fcfs(processes: list):
-
-    # processes.sort(key=lambda p: p.arrival_time)
     non_visible_processes = deque(processes)
     pending_processes = deque()
     finished_processes = []
@@ -16,7 +12,6 @@ def fcfs(processes: list):
     def processes_left():
         return len(non_visible_processes) > 0 or len(pending_processes) > 0 or active_process is not None
 
-    # while current_time < FINISH_TIME and processes_left():
     while processes_left():
         while len(non_visible_processes) > 0 and non_visible_processes[0].arrival_time == current_time:
             pending_processes.append(non_visible_processes.popleft())
