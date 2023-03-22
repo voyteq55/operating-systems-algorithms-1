@@ -11,6 +11,25 @@ class Process:
     def is_done(self):
         return self.time_left <= 0
 
+    def wait_as_pending(self):
+        self.time_waited_for_execution_start += 1
+
+    def execute(self):
+        self.time_left -= 1
+        self.time_from_start_to_finish += 1
+
+    def wait_between_switching(self):
+        self.time_from_start_to_finish += 1
+
     def __str__(self):
         return f"process: arrival time - {self.arrival_time}," \
                f" time needed for execution - {self.time_needed_for_execution}"
+
+    def __lt__(self, other):
+        return self.time_needed_for_execution < other.time_needed_for_execution
+
+    def full_report(self):
+        return f"process: arrival time - {self.arrival_time}," \
+               f" time needed for execution - {self.time_needed_for_execution}, time left - {self.time_left}, time " \
+               f"waited for starting execution - {self.time_waited_for_execution_start}, time from start to finish - " \
+               f"{self.time_from_start_to_finish} "
