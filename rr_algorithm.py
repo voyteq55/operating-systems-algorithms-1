@@ -54,13 +54,7 @@ def rr(processes: list, quantum):
 
         current_time += 1
 
-    results = {
-        "finished": finished_processes,
-        "pending": pending_processes,
-        "active": active_process,
-        "waiting_between_switches": [],
-        "switches": number_of_switches
-    }
+    results = {"finished": finished_processes, "switches": number_of_switches}
 
     return results
 
