@@ -1,8 +1,11 @@
 import numpy as np
 import math
+from random import random
 
 from process import Process
 
+PROBABILITY_OF_LONG_PROCESSES = 0.1
+PROBABILITY_OF_SHORT_PROCESSES = 0.1
 
 def generate_processes(n_of_processes) -> list:
     processes = []
@@ -23,10 +26,10 @@ def generate_processes(n_of_processes) -> list:
 
 
 def generate_random_execution_time():
-    random_number = np.random.randint(10)
-    if random_number == 9:
+    random_number = random()
+    if random_number >= 1 - PROBABILITY_OF_LONG_PROCESSES:
         execution_time = max(math.floor(np.random.normal(100, 10)), 1)
-    elif random_number <= 1:
+    elif random_number <= PROBABILITY_OF_SHORT_PROCESSES:
         execution_time = max(math.floor(np.random.normal(5, 1)), 1)
     else:
         execution_time = max(math.floor(np.random.normal(20, 5)), 1)
@@ -35,10 +38,10 @@ def generate_random_execution_time():
 
 
 def generate_random_arrival_time_delta():
-    random_number = np.random.randint(10)
-    if random_number == 9:
+    random_number = random()
+    if random_number >= 1 - PROBABILITY_OF_LONG_PROCESSES:
         arrival_time_delta = max(math.floor(np.random.normal(120, 10)), 1)
-    elif random_number <= 1:
+    elif random_number <= PROBABILITY_OF_SHORT_PROCESSES:
         arrival_time_delta = max(math.floor(np.random.normal(5, 1)), 1)
     else:
         arrival_time_delta = max(math.floor(np.random.normal(20, 5)), 1)
