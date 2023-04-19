@@ -4,8 +4,8 @@ from random import random
 
 from process import Process
 
-PROBABILITY_OF_LONG_PROCESSES = 0.1
-PROBABILITY_OF_SHORT_PROCESSES = 0.1
+PROBABILITY_OF_LONG_PROCESSES = 0.2
+PROBABILITY_OF_SHORT_PROCESSES = 0
 
 def generate_processes(n_of_processes) -> list:
     processes = []
