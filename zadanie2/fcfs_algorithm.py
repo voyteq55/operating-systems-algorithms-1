@@ -41,3 +41,6 @@ class FcfsAlgorithm(algorithm.Algorithm):
             self.current_time += 1
 
         return {"finished": self.finished_requests, "disk_head_movements": self.number_of_disk_head_movements}
+
+    def __str__(self):
+        return "FCFS"

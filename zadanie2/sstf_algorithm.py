@@ -41,6 +41,9 @@ class SstfAlgorithm(algorithm.Algorithm):
 
         return {"finished": self.finished_requests, "disk_head_movements": self.number_of_disk_head_movements}
 
-    def find_shortest_seek_time_request(self):
+    def find_shortest_seek_time_request(self) -> Request:
         self.pending_requests.sort(key=lambda request: abs(request.position - self.disk_head_position))
         return self.pending_requests.pop(0)
+
+    def __str__(self):
+        return "SSTF"

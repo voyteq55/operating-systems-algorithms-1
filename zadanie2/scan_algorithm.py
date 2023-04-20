@@ -53,3 +53,6 @@ class ScanAlgorithm(algorithm.Algorithm):
                     return True
             return False
         return self.non_visible_requests or are_pending(self.pending_requests)
+
+    def __str__(self):
+        return "SCAN"

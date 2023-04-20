@@ -2,7 +2,7 @@ import simulation
 
 
 def main():
-    simulation.perform_simulation()
+    simulation.perform_simulations()
 
 
 if __name__ == '__main__':

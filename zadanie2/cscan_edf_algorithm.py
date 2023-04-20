@@ -64,10 +64,13 @@ class CScanEdfAlgorithm(algorithm.Algorithm):
         else:
             self.pending_requests[request.position] = [request]
 
-    def are_requests_left(self):
+    def are_requests_left(self) -> bool:
         def are_pending(requests):
             for request_list in requests:
                 if request_list:
                     return True
             return False
         return self.non_visible_requests or self.pending_real_time_requests or are_pending(self.pending_requests)
+
+    def __str__(self):
+        return "C-SCAN (EDF)"

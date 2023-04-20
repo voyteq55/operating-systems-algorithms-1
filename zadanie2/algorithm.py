@@ -14,5 +14,5 @@ class Algorithm:
     def perform_accessing(self) -> dict:
         pass
 
-    def are_requests_left(self):
+    def are_requests_left(self) -> bool:
         return self.non_visible_requests or self.pending_requests

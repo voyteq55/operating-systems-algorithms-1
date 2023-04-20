@@ -21,10 +21,8 @@ class CScanFDScanAlgorithm(algorithm.Algorithm):
                     self.add_to_pending(request_to_add_to_pending)
 
             self.pending_real_time_requests.sort(key=lambda real_time_request: real_time_request.deadline_real_time)
-            # print(self.pending_real_time_requests)
             while self.pending_real_time_requests and self.pending_real_time_requests[0].deadline_real_time < abs(self.pending_real_time_requests[0].position - self.disk_head_position):
                 self.unfinished_requests.append(self.pending_real_time_requests.pop(0))
-                # b = 5/0
 
             if self.pending_real_time_requests:
                 if self.pending_real_time_requests[0].position < self.disk_head_position:
@@ -68,10 +66,13 @@ class CScanFDScanAlgorithm(algorithm.Algorithm):
         else:
             self.pending_requests[request.position] = [request]
 
-    def are_requests_left(self):
+    def are_requests_left(self) -> bool:
         def are_pending(requests):
             for request_list in requests:
                 if request_list:
                     return True
             return False
         return self.non_visible_requests or self.pending_real_time_requests or are_pending(self.pending_requests)
+
+    def __str__(self):
+        return "C-SCAN (FD-SCAN)"
